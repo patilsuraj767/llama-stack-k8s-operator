@@ -25,3 +25,4 @@ testbin/*
 *~
 
 .golangci.mktmp.yml
+.envrc

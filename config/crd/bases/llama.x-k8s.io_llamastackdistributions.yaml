@@ -223,10 +223,11 @@ spec:
                     type: object
                     x-kubernetes-validations:
                     - message: Only one of name or image can be specified
-                      rule: (self.name == '' && self.image != '') || (self.name !=
-                        '' && self.image == '')
+                      rule: '!(has(self.name) && self.name != '''' && has(self.image)
+                        && self.image != '''')'
                     - message: Either name or image must be specified
-                      rule: self.name != '' || self.image != ''
+                      rule: has(self.name) && self.name != '' || has(self.image) &&
+                        self.image != ''
                   podOverrides:
                     description: PodOverrides allows advanced pod-level customization.
                     properties:
